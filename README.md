@@ -32,4 +32,10 @@ Notes:
 
 ## Altair
 
+![Altair](./python-altair/altair-scatterplot.png)
 
+Notes:
+- The colors are not exactly the same as the original due to differences in default color palettes between ggplot2 and Altair. 
+- The legend is different in style, but placed similarly to the seaborn version.
+- It required more specific customization to mimic the gray grid theme of the original.
+- Working with Altair was very nice since it is very customizable and has a clean API.
