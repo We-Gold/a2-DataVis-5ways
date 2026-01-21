@@ -57,10 +57,12 @@ d3.csv(CSV_PATH).then((data) => {
 			} => d !== null,
 		)
 
-	const width = 800
+	const legendWidth = 200
+	const width = 800 + legendWidth
 	const height = 600
 	const margin = { top: 20, right: 30, bottom: 55, left: 60 }
-	const innerWidth = width - margin.left - margin.right
+	const plotRight = width - margin.right - legendWidth
+	const innerWidth = plotRight - margin.left
 	const innerHeight = height - margin.top - margin.bottom
 
 	const svg = d3
@@ -93,7 +95,7 @@ d3.csv(CSV_PATH).then((data) => {
 	const x = d3
 		.scaleLinear()
 		.domain(padDomain(xExtent, 0.03))
-		.range([margin.left, width - margin.right])
+		.range([margin.left, plotRight])
 		.nice()
 
 	const y = d3
@@ -106,6 +108,7 @@ d3.csv(CSV_PATH).then((data) => {
 		.scaleSqrt()
 		.domain(d3.extent(parsed, (d) => d.bill_length_mm) as [number, number])
 		.range([5, 13])
+		.clamp(true)
 
 	// ggplot2 theme_grey-like styling
 	const panelBg = "#EBEBEB"
@@ -165,7 +168,7 @@ d3.csv(CSV_PATH).then((data) => {
 		.call((g) => g.selectAll("text").attr("fill", axisText))
 
 	svg.append("text")
-		.attr("x", (margin.left + (width - margin.right)) / 2)
+		.attr("x", (margin.left + plotRight) / 2)
 		.attr("y", height - 10)
 		.attr("text-anchor", "middle")
 		.attr("fill", titleText)
@@ -201,5 +204,113 @@ d3.csv(CSV_PATH).then((data) => {
 			(d) => SPECIES_COLORS[d.species] ?? DEFAULT_SPECIES_COLOR,
 		)
 		.attr("stroke-width", 0.5)
+
+	/* AI Usage Note:
+    Can you add a legend off of the right side of the plot? It should be centered vertically. The first section should be for bill_length_mm, and it should have two circles representing the size of a point with data value 40 and with 50. The circles should be gray and slightly transparent, but with a solid border. 
+
+    Below should be the species section, and it is similar but shows the colors.
+  */
+	// Legend (right side, centered vertically)
+	const legendX = plotRight + 24
+	const legendTitleSize = 12
+	const legendTextSize = 12
+	const legendLineHeight = 18
+
+	const sizeLegendValues: [number, number] = [40, 50]
+	const sizeLegendR = sizeLegendValues.map((v) => r(v))
+	const sizeLegendMaxR = d3.max(sizeLegendR) ?? 0
+	const sizeLegendTitleH = legendLineHeight
+	const sizeLegendRowH = Math.max(legendLineHeight, sizeLegendMaxR * 2 + 6)
+	const sizeLegendCirclesH = sizeLegendRowH * sizeLegendValues.length
+	const sizeLegendH = sizeLegendTitleH + sizeLegendCirclesH + 6
+
+	const species = Object.keys(SPECIES_COLORS)
+	const speciesLegendTitleH = legendLineHeight
+	const speciesLegendItemsH = species.length * legendLineHeight
+	const speciesLegendH = speciesLegendTitleH + speciesLegendItemsH
+
+	const legendGap = 18
+	const legendH = sizeLegendH + legendGap + speciesLegendH
+	const legendY = margin.top + innerHeight / 2 - legendH / 2
+
+	const legend = svg
+		.append("g")
+		.attr("transform", `translate(${legendX},${legendY})`)
+
+	// Size legend
+	legend
+		.append("text")
+		.attr("x", 0)
+		.attr("y", legendTitleSize)
+		.attr("fill", titleText)
+		.style("font-size", `${legendTitleSize}px`)
+		.text("bill_length_mm")
+
+	const sizeLegendTop = sizeLegendTitleH
+	const sizeLegendCircleX = sizeLegendMaxR
+	const sizeLegendLabelX = sizeLegendMaxR * 2 + 10
+
+	sizeLegendValues.forEach((value, i) => {
+		const radius = r(value)
+		const cy = sizeLegendTop + i * sizeLegendRowH + sizeLegendRowH / 2
+		legend
+			.append("circle")
+			.attr("cx", sizeLegendCircleX)
+			.attr("cy", cy)
+			.attr("r", radius)
+			.attr("fill", "#7F7F7F")
+			.attr("fill-opacity", 0.35)
+			.attr("stroke", "#4D4D4D")
+			.attr("stroke-width", 1)
+
+		legend
+			.append("text")
+			.attr("x", sizeLegendLabelX)
+			.attr("y", cy)
+			.attr("dominant-baseline", "middle")
+			.attr("fill", axisText)
+			.style("font-size", `${legendTextSize}px`)
+			.text(String(value))
+	})
+
+	// Species legend
+	const speciesLegendY = sizeLegendH + legendGap
+	legend
+		.append("text")
+		.attr("x", 0)
+		.attr("y", speciesLegendY + legendTitleSize)
+		.attr("fill", titleText)
+		.style("font-size", `${legendTitleSize}px`)
+		.text("species")
+
+	const speciesItemStartY = speciesLegendY + speciesLegendTitleH
+	const speciesDotR = 6
+	const speciesDotX = speciesDotR
+	const speciesLabelX = speciesDotR * 2 + 10
+
+	species.forEach((sp, i) => {
+		const yPos =
+			speciesItemStartY + i * legendLineHeight + legendLineHeight / 2
+		const c = SPECIES_COLORS[sp] ?? DEFAULT_SPECIES_COLOR
+
+		legend
+			.append("circle")
+			.attr("cx", speciesDotX)
+			.attr("cy", yPos)
+			.attr("r", speciesDotR)
+			.attr("fill", c)
+			.attr("fill-opacity", 0.8)
+			.attr("stroke", c)
+			.attr("stroke-width", 1)
+
+		legend
+			.append("text")
+			.attr("x", speciesLabelX)
+			.attr("y", yPos)
+			.attr("dominant-baseline", "middle")
+			.attr("fill", axisText)
+			.style("font-size", `${legendTextSize}px`)
+			.text(sp)
+	})
 })
 
