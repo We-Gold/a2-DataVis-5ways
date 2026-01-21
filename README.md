@@ -13,9 +13,15 @@ Assignment 2 - Data Visualization, 5 Ways
 
 
 
-## Matplotlib
+## Matplotlib / Seaborn
 
+![Matplotlib-Seaborn](./python-matplotlib/matplotlib-scatterplot.png)
 
+Notes:
+- The colors are not exactly the same as the original due to differences in default color palettes between ggplot2 and Seaborn. I tried to match purple manually since it was the most different.
+- The legend is clearly different in style. I placed it to the right side so it is similar to the original. 
+- The legend uses greater granularity for the sizes.
+- I had to add some custom code to get the point outlines to match their fill instead of being white.
 
 ## R + ggplot2
 
