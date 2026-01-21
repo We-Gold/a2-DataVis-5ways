@@ -7,7 +7,11 @@ Assignment 2 - Data Visualization, 5 Ways
 
 ## d3
 
+![d3](./d3-plot/d3-plot.png)
 
+Notes:
+- D3 requires more code to create the desired plot, but it is extremely customizable and flexible.
+- With enough effort, you can replicate everything exactly as you want it. 
 
 ## Mosaic
 
