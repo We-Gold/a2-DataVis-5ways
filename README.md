@@ -54,3 +54,11 @@ Notes:
 - The legend is different in style, but placed similarly to the seaborn version.
 - It required more specific customization to mimic the gray grid theme of the original.
 - Working with Altair was very nice since it is very customizable and has a clean API.
+
+## Bonus: DataWrapper
+
+![DataWrapper](./datawrapper.png)
+
+Notes:
+- It was very easy to create the scatter plot and do most of the customization.
+- The only thing I couldn't do was add an outline to the points that matched their fill color. You could customize the outline color, but it was the same for all points.
