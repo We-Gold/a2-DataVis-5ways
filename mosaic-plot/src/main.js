@@ -27,19 +27,31 @@ await vg.coordinator().exec([
 document.getElementById("plot").replaceChildren(
   vg.hconcat(
     vg.plot(
+      vg.frame({fill: "#eaeaea"}),
+      vg.gridY({stroke: "white", strokeOpacity: 1}),
+      vg.gridX({stroke: "white", strokeOpacity: 1}),
+      vg.style({fontSize: 16}),
+      vg.marginLeft(100),
+      vg.marginBottom(100),
       vg.rDomain([30, 60]),
       vg.rRange([5, 10]),
       vg.colorRange(['orange', '#A550EF', 'darkcyan']),
+      vg.xDomain([170, 233]),
+      vg.yDomain([2500, 6500]),
       vg.dot(
         vg.from("penglings"),
         {x: vg.column($x), y: vg.column($y), fill: "species", stroke: "species", r: "bill_length_mm", fillOpacity: 0.8}
       ),
       vg.name("pplot"),
-      vg.width(600),
-      vg.height(400),
+      vg.width(700),
+      vg.height(450),
       vg.grid(true),
-      vg.xLabel("Flipper Length (mm) →"),
-      vg.yLabel("↑ Body mass (g)"),
+      vg.xLabel("Flipper Length (mm)"),
+      vg.xLabelAnchor("center"),
+      vg.yLabel("Body Mass (g)"),
+      vg.yLabelAnchor("center"),
+      vg.xLabelOffset(50),
+      vg.yLabelOffset(80),
     ),
     vg.colorLegend({for: "pplot", columns: 1}),
   )

@@ -17,6 +17,17 @@ Notes:
 
 I started with the `vanilla-example` from https://github.com/uwdata/mosaic. I also referenced the mosaic examples like https://idl.uw.edu/mosaic/examples/symbols.html.
 
+![Mosaic](./mosaic-plot/mosaic-plot.png)
+
+Notes:
+- Mosaic uses a SQL-like syntax to manipulate data, which is very convenient for those familiar with SQL.
+- Mosaic's vgplot library mirrors Observable Plot, which makes it familiar, but I found it to be very challenging to customize.
+    - Out of all the libraries I used, this was the most opinioned and least feature-rich. 
+    - Specifically, there is no native way to add a scale legend. This is the only library where I couldn't do this at all.
+        - There is an [open issue](https://github.com/observablehq/plot/issues/236) for this in Observable Plot, and thus Mosaic won't get this feature until Observable Plot does. 
+    - I think a lot of this comes down to them basing their API on Observable Plot, so I had to constantly look at Observable's documentation to see how to do something. Then hope that it was implemented in Mosaic's vgplot.
+- In terms of data flexibility, Mosaic is clearly very powerful since it uses DuckDB under the hood, so you can use SQL, parquet, csv, etc.
+
 ## Matplotlib / Seaborn
 
 ![Matplotlib-Seaborn](./python-matplotlib/matplotlib-scatterplot.png)
