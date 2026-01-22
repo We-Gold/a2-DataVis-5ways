@@ -15,7 +15,7 @@ Notes:
 
 ## Mosaic
 
-
+I started with the `vanilla-example` from https://github.com/uwdata/mosaic. I also referenced the mosaic examples like https://idl.uw.edu/mosaic/examples/symbols.html.
 
 ## Matplotlib / Seaborn
 
