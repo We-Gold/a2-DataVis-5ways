@@ -42,5 +42,33 @@ def create_scatterplot():
 	fig.tight_layout(rect=(0, 0, 1, 1))
 	plt.savefig('matplotlib-scatterplot.png', dpi=300)
 
+def create_scatterplot_3d(save=True):
+	fig = plt.figure(figsize=(10, 8))
+	ax = fig.add_subplot(111, projection='3d')
+
+	for species in species_order:
+		subset = data[data['species'] == species]
+		ax.scatter(
+			subset['flipper_length_mm'],
+			subset['body_mass_g'],
+			subset['bill_length_mm'],
+			color=species_palette[species],
+			label=species,
+			s=60,
+			alpha=0.8
+		)
+
+	ax.set_xlabel('Flipper Length (mm)')
+	ax.set_ylabel('Body Mass (g)')
+	ax.set_zlabel('Bill Length (mm)')
+
+	ax.legend(title='species', bbox_to_anchor=(1.02, 1), loc='upper left')
+	
+	if save:
+		plt.savefig('matplotlib-scatterplot-3d.png', dpi=300)
+	else:
+		plt.show()
+
 if __name__ == "__main__":
+	create_scatterplot_3d()
 	create_scatterplot()
