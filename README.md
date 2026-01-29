@@ -38,6 +38,11 @@ Notes:
 - The legend uses greater granularity for the sizes.
 - I had to add some custom code to get the point outlines to match their fill instead of being white.
 
+### 3D Matplotlib
+![3d matplotlib](./python-matplotlib/3d-matplotlib.gif)
+
+- I'll discuss this more in techncial achievements, but I used Matplotlib's 3D capabilities to create an interactive 3D scatter plot.
+
 ## R + ggplot2
 
 ![R-ggplot2](./r-ggplot2/Rplot.png)
