@@ -81,6 +81,10 @@ Notes:
 # Overall Technical Achievements
 
 - Implemented the original scatter plot in 5 different programming languages/libraries (D3, Mosaic, Matplotlib/Seaborn, R + ggplot2, Altair) plus a bonus using DataWrapper.
+    - Two of these (D3 and Mosaic) are JavaScript-based, two are Python-based (Matplotlib/Seaborn and Altair), and one is R-based (ggplot2).
+    - D3 is a low-level JS library for SVG manipulation, while Mosaic is a higher-level plotting framework built on top of DuckDB for data manipulation and vgplot (Observable Plot) for data-driven visualization.
+    - Matplotlib/Seaborn create Python-native plots, while Altair is a declarative plotting library that compiles to Vega-Lite, which is a web-first visualization grammar.
+    - R + ggplot2 is a well-known R plotting library based on the Grammar of Graphics.
 - Created interactive histograms in D3 that highlight the selected point's position in the distribution of its own species for three different numeric metrics.
 - Created an interactive 3D scatter plot using Matplotlib's 3D capabilities, allowing users to rotate and explore the data in three dimensions.
 - Used SQL-like data manipulation in Mosaic to efficiently filter and prepare the dataset for visualization.
