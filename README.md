@@ -34,6 +34,7 @@ Notes:
     - Out of all the libraries I used, this was the most opinioned and least feature-rich. 
     - Specifically, there is no native way to add a scale legend. This is the only library where I couldn't do this at all.
         - There is an [open issue](https://github.com/observablehq/plot/issues/236) for this in Observable Plot, and thus Mosaic won't get this feature until Observable Plot does. 
+        - I DID scale the points by bill length, but there is no legend to indicate this.
     - I also couldn't figure out how to remove the arrows at the end of the axes.
     - Additionally, the render order of the different species was different from the other libraries. Perhaps I could have modified this with SQL.
     - I think a lot of this comes down to them basing their API on Observable Plot, so I had to constantly look at Observable's documentation to see how to do something. Then hope that it was implemented in Mosaic's vgplot.
@@ -52,7 +53,8 @@ Notes:
 ## 3D Matplotlib Scatterplot
 ![3d matplotlib](./img/3d-matplotlib.gif)
 
-- I'll discuss this more in techncial achievements, but I used Matplotlib's 3D capabilities to create an interactive 3D scatter plot.
+- I used Matplotlib's 3D capabilities to create an interactive 3D scatter plot.
+- There is no size legend since bill length is one of the three axes. I also felt that it could be challenging for the user to perceive size differences in a 3D plot.
 
 # R + ggplot2
 
