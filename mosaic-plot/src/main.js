@@ -40,7 +40,14 @@ document.getElementById("plot").replaceChildren(
       vg.yDomain([2500, 6500]),
       vg.dot(
         vg.from("penglings"),
-        {x: vg.column($x), y: vg.column($y), fill: "species", stroke: "species", r: "bill_length_mm", fillOpacity: 0.8}
+        {
+          x: vg.column($x),
+          y: vg.column($y),
+          fill: "species",
+          stroke: "species",
+          r: "bill_length_mm",
+          fillOpacity: 0.8,
+        }
       ),
       vg.name("pplot"),
       vg.width(700),
