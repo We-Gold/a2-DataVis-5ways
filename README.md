@@ -5,6 +5,8 @@ Assignment 2 - Data Visualization, 5 Ways
 
 Instructions for running the code can be found at the bottom. Technical and design achievements are also at the bottom. 
 
+If anything stood out about a specific approach, I noted it in the respective section. Most details are in the Technical and Design Achievements section.
+
 # d3
 
 ![d3](./img/d3-plot.png)
@@ -100,6 +102,7 @@ Notes:
     - I tried to make sure the border colors matched the fill colors for points, but this was not possible in DataWrapper.
     - I tried to match the point sizes as closely as possible, but some libraries had different scaling.
     - I tried to match plot dimensions, but some libraries scale the plots differently based on the container or window size.
+    - I had no issue using the same opacity (0.8) for all points across all implementations.
 - For the interactive histograms in D3, I designed them to match their color scheme with the selected point's species, using a more bold color for the highlighted bin.
 
 # Instructions to Run the Code
