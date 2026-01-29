@@ -1,5 +1,6 @@
 import "./style.css"
 import * as d3 from "d3"
+import { createHistogram } from "./histogram"
 
 /* AI Usage Note: Can you mimic the ggplot2 theme_grey? It should have a white grid with a gray background. */
 
@@ -28,6 +29,9 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
     <h1>d3-plot</h1>
     <div id="chart"></div>
+    <div id="histogram-flipper"></div>
+    <div id="histogram-mass"></div>
+    <div id="histogram-bill"></div>
   </div>
 `
 
@@ -204,6 +208,39 @@ d3.csv(CSV_PATH).then((data) => {
 			(d) => SPECIES_COLORS[d.species] ?? DEFAULT_SPECIES_COLOR,
 		)
 		.attr("stroke-width", 0.5)
+		.on("mouseover", function () {
+			d3.select(this).attr("stroke-width", 2).attr("fill-opacity", 1.0)
+		})
+		.on("mouseout", function () {
+			d3.select(this).attr("stroke-width", 0.5).attr("fill-opacity", 0.8)
+		})
+		.on("click", (_, d) => {
+			const color = SPECIES_COLORS[d.species] ?? DEFAULT_SPECIES_COLOR
+			createHistogram(
+				"#histogram-flipper",
+				parsed,
+				d,
+				"flipper_length_mm",
+				"Flipper Length",
+				color,
+			)
+			createHistogram(
+				"#histogram-mass",
+				parsed,
+				d,
+				"body_mass_g",
+				"Body Mass",
+				color,
+			)
+			createHistogram(
+				"#histogram-bill",
+				parsed,
+				d,
+				"bill_length_mm",
+				"Bill Length",
+				color,
+			)
+		})
 
 	/* AI Usage Note:
     Can you add a legend off of the right side of the plot? It should be centered vertically. The first section should be for bill_length_mm, and it should have two circles representing the size of a point with data value 40 and with 50. The circles should be gray and slightly transparent, but with a solid border. 

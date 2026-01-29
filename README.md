@@ -13,6 +13,13 @@ Notes:
 - D3 requires more code to create the desired plot, but it is extremely customizable and flexible.
 - With enough effort, you can replicate everything exactly as you want it. 
 
+### Interactive Histograms
+
+![d3-histogram](./d3-plot/d3-plots.gif)
+
+- When you hover the mouse over a point, it highlights it.
+- When you click a point, it creates three histograms below, each showing the point in a distribution of its own species for each of the three chosen numeric metrics (flipper length, body mass, bill length).
+
 ## Mosaic
 
 I started with the `vanilla-example` from https://github.com/uwdata/mosaic. I also referenced the mosaic examples like https://idl.uw.edu/mosaic/examples/symbols.html.
@@ -38,7 +45,7 @@ Notes:
 - The legend uses greater granularity for the sizes.
 - I had to add some custom code to get the point outlines to match their fill instead of being white.
 
-### 3D Matplotlib
+### 3D Matplotlib Scatterplot
 ![3d matplotlib](./python-matplotlib/3d-matplotlib.gif)
 
 - I'll discuss this more in techncial achievements, but I used Matplotlib's 3D capabilities to create an interactive 3D scatter plot.
