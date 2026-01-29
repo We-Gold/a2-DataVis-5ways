@@ -1,9 +1,9 @@
 ![penguins](https://github.com/cs4804-24c/a2-DataVis-5Ways/assets/412089/accc5680-3c77-4d29-9502-d3ff8cd922af)
 
-# 02-DataVis-5ways
-
 Assignment 2 - Data Visualization, 5 Ways  
 ===
+
+Instructions for running the code can be found at the bottom. Technical and design achievements are also at the bottom. 
 
 ## d3
 
@@ -32,6 +32,8 @@ Notes:
     - Out of all the libraries I used, this was the most opinioned and least feature-rich. 
     - Specifically, there is no native way to add a scale legend. This is the only library where I couldn't do this at all.
         - There is an [open issue](https://github.com/observablehq/plot/issues/236) for this in Observable Plot, and thus Mosaic won't get this feature until Observable Plot does. 
+    - I also couldn't figure out how to remove the arrows at the end of the axes.
+    - Additionally, the render order of the different species was different from the other libraries. Perhaps I could have modified this with SQL.
     - I think a lot of this comes down to them basing their API on Observable Plot, so I had to constantly look at Observable's documentation to see how to do something. Then hope that it was implemented in Mosaic's vgplot.
 - In terms of data flexibility, Mosaic is clearly very powerful since it uses DuckDB under the hood, so you can use SQL, parquet, csv, etc.
 
@@ -74,3 +76,48 @@ Notes:
 Notes:
 - It was very easy to create the scatter plot and do most of the customization.
 - The only thing I couldn't do was add an outline to the points that matched their fill color. You could customize the outline color, but it was the same for all points.
+
+## Technical Achievements
+
+- Implemented the original scatter plot in 5 different programming languages/libraries (D3, Mosaic, Matplotlib/Seaborn, R + ggplot2, Altair) plus a bonus using DataWrapper.
+- Created interactive histograms in D3 that highlight the selected point's position in the distribution of its own species for three different numeric metrics.
+- Created an interactive 3D scatter plot using Matplotlib's 3D capabilities, allowing users to rotate and explore the data in three dimensions.
+- Used SQL-like data manipulation in Mosaic to efficiently filter and prepare the dataset for visualization.
+- Used custom code in D3 and Matplotlib to closely mimic the original ggplot2 theme and legend.
+- Extensively customized Mosaic and Altair's plots to mimic the original ggplot2 theme, despite their limitations.
+
+## Design Achievements
+
+- Maintained visual consistency across all implementations by closely following the original ggplot2 design, including color schemes, point sizes, and legend placements.
+    - This was sometimes impossible to match perfectly, but I tried my best. For instance, with Altair and Matplotlib, I had to move the legend to the right side to match the original. For Altair, I couldn't keep the legend order the same as the original.
+    - For DataWrapper, the legend was at the top, and I couldn't really change that.
+    - For all the library-based implementations, I ensured that the grid lines and background colors were as close to the original as possible (tried to mimic "theme_grey" from ggplot2).
+    - I tried to make sure the border colors matched the fill colors for points, but this was not possible in DataWrapper.
+    - I tried to match the point sizes as closely as possible, but some libraries had different scaling.
+    - I tried to match plot dimensions, but some libraries scale the plots differently based on the container or window size.
+- For the interactive histograms in D3, I designed them to match their color scheme with the selected point's species, using a more bold color for the highlighted bin.
+
+## Instructions to Run the Code
+
+**Python (Matplotlib/Seaborn and Altair):**
+
+Both projects are managed with `uv`. If you have it installed, can you do `uv sync` in the respective directories to install dependencies. Then run `uv run <script>` to run the code.
+
+If you have a global Python environment, you can just run the code directly assuming you have the dependencies installed.
+
+**JS-Based (D3 and Mosaic):**
+
+You need to have `node` and `npm` installed. Then, in each respective directory, run:
+
+```
+npm install
+npm run dev
+```
+
+**R + ggplot2:**
+
+R and RStudio
+
+**DataWrapper:**
+
+Just use the web interface at https://www.datawrapper.de/
