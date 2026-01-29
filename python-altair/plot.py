@@ -19,4 +19,4 @@ alt.Chart(data).mark_circle(size=60).encode(
     gridColor="white",
     domain=False,
     ticks=False
-).configure_mark(opacity=0.8).properties(width=600, height=400).save('altair-scatterplot.png', scale_factor=3)
+).configure_mark(opacity=0.8).properties(width=600, height=400).save('../img/altair-scatterplot.png', scale_factor=3)

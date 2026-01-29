@@ -5,26 +5,26 @@ Assignment 2 - Data Visualization, 5 Ways
 
 Instructions for running the code can be found at the bottom. Technical and design achievements are also at the bottom. 
 
-## d3
+# d3
 
-![d3](./d3-plot/d3-plot.png)
+![d3](./img/d3-plot.png)
 
 Notes:
 - D3 requires more code to create the desired plot, but it is extremely customizable and flexible.
 - With enough effort, you can replicate everything exactly as you want it. 
 
-### Interactive Histograms
+## Interactive Histograms
 
-![d3-histogram](./d3-plot/d3-plots.gif)
+![d3-histogram](./img/d3-plots.gif)
 
 - When you hover the mouse over a point, it highlights it.
 - When you click a point, it creates three histograms below, each showing the point in a distribution of its own species for each of the three chosen numeric metrics (flipper length, body mass, bill length).
 
-## Mosaic
+# Mosaic
 
 I started with the `vanilla-example` from https://github.com/uwdata/mosaic. I also referenced the mosaic examples like https://idl.uw.edu/mosaic/examples/symbols.html.
 
-![Mosaic](./mosaic-plot/mosaic-plot.png)
+![Mosaic](./img/mosaic-plot.png)
 
 Notes:
 - Mosaic uses a SQL-like syntax to manipulate data, which is very convenient for those familiar with SQL.
@@ -37,9 +37,9 @@ Notes:
     - I think a lot of this comes down to them basing their API on Observable Plot, so I had to constantly look at Observable's documentation to see how to do something. Then hope that it was implemented in Mosaic's vgplot.
 - In terms of data flexibility, Mosaic is clearly very powerful since it uses DuckDB under the hood, so you can use SQL, parquet, csv, etc.
 
-## Matplotlib / Seaborn
+# Matplotlib / Seaborn
 
-![Matplotlib-Seaborn](./python-matplotlib/matplotlib-scatterplot.png)
+![Matplotlib-Seaborn](./img/matplotlib-scatterplot.png)
 
 Notes:
 - The colors are not exactly the same as the original due to differences in default color palettes between ggplot2 and Seaborn. I tried to match purple manually since it was the most different.
@@ -47,37 +47,38 @@ Notes:
 - The legend uses greater granularity for the sizes.
 - I had to add some custom code to get the point outlines to match their fill instead of being white.
 
-### 3D Matplotlib Scatterplot
-![3d matplotlib](./python-matplotlib/3d-matplotlib.gif)
+## 3D Matplotlib Scatterplot
+![3d matplotlib](./img/3d-matplotlib.gif)
 
 - I'll discuss this more in techncial achievements, but I used Matplotlib's 3D capabilities to create an interactive 3D scatter plot.
 
-## R + ggplot2
+# R + ggplot2
 
-![R-ggplot2](./r-ggplot2/Rplot.png)
+![R-ggplot2](./img/Rplot.png)
 
 Notes:
 - Since the original graphic was created with ggplot2, the R + ggplot2 version is nearly identical to the original.
 
-## Altair
+# Altair
 
-![Altair](./python-altair/altair-scatterplot.png)
+![Altair](./img/altair-scatterplot.png)
 
 Notes:
 - The colors are not exactly the same as the original due to differences in default color palettes between ggplot2 and Altair. 
 - The legend is different in style, but placed similarly to the seaborn version.
 - It required more specific customization to mimic the gray grid theme of the original.
 - Working with Altair was very nice since it is very customizable and has a clean API.
+- For an unknown reason, I couldn't get the stroke to show up for the points, despite following the documentation.
 
-## Bonus: DataWrapper
+# Bonus: DataWrapper
 
-![DataWrapper](./datawrapper.png)
+![DataWrapper](./img/datawrapper.png)
 
 Notes:
 - It was very easy to create the scatter plot and do most of the customization.
 - The only thing I couldn't do was add an outline to the points that matched their fill color. You could customize the outline color, but it was the same for all points.
 
-## Technical Achievements
+# Overall Technical Achievements
 
 - Implemented the original scatter plot in 5 different programming languages/libraries (D3, Mosaic, Matplotlib/Seaborn, R + ggplot2, Altair) plus a bonus using DataWrapper.
 - Created interactive histograms in D3 that highlight the selected point's position in the distribution of its own species for three different numeric metrics.
@@ -86,7 +87,7 @@ Notes:
 - Used custom code in D3 and Matplotlib to closely mimic the original ggplot2 theme and legend.
 - Extensively customized Mosaic and Altair's plots to mimic the original ggplot2 theme, despite their limitations.
 
-## Design Achievements
+# Overall Design Achievements
 
 - Maintained visual consistency across all implementations by closely following the original ggplot2 design, including color schemes, point sizes, and legend placements.
     - This was sometimes impossible to match perfectly, but I tried my best. For instance, with Altair and Matplotlib, I had to move the legend to the right side to match the original. For Altair, I couldn't keep the legend order the same as the original.
@@ -97,7 +98,7 @@ Notes:
     - I tried to match plot dimensions, but some libraries scale the plots differently based on the container or window size.
 - For the interactive histograms in D3, I designed them to match their color scheme with the selected point's species, using a more bold color for the highlighted bin.
 
-## Instructions to Run the Code
+# Instructions to Run the Code
 
 **Python (Matplotlib/Seaborn and Altair):**
 

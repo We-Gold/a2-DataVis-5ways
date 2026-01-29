@@ -40,7 +40,7 @@ def create_scatterplot():
 	plt.ylabel('Body Mass (g)')
 	ax.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 	fig.tight_layout(rect=(0, 0, 1, 1))
-	plt.savefig('matplotlib-scatterplot.png', dpi=300)
+	plt.savefig('../img/matplotlib-scatterplot.png', dpi=300)
 
 def create_scatterplot_3d(save=True):
 	fig = plt.figure(figsize=(10, 8))
@@ -65,7 +65,7 @@ def create_scatterplot_3d(save=True):
 	ax.legend(title='species', bbox_to_anchor=(1.02, 1), loc='upper left')
 	
 	if save:
-		plt.savefig('matplotlib-scatterplot-3d.png', dpi=300)
+		plt.savefig('../img/matplotlib-scatterplot-3d.png', dpi=300)
 	else:
 		plt.show()
 
